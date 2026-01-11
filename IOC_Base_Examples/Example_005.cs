@@ -43,10 +43,9 @@ namespace IOC_Base_Examples
 
             public Test(IAccount account, IMessage message, ITool tool)
             {
-                Console.WriteLine($"Ctor:Test(IAccount,IMessage,ITest)!");
+                Console.WriteLine($"Ctor:Test(IAccount,IMessage,ITool)!");
             }
         }
-
 
 
         public static void Run()
@@ -54,6 +53,7 @@ namespace IOC_Base_Examples
             var test = new ServiceCollection()
                 .AddTransient<IAccount, Account>()
                 .AddScoped<IMessage, Message>()
+                .AddScoped<ITool, Tool>()
                 .AddSingleton<ITest, Test>()
                 .BuildServiceProvider()
                 .GetService<ITest>();
